@@ -1,0 +1,5 @@
+bindkey -e
+eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"
+
+PATH=$PATH:$HOME/bin
