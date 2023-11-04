@@ -15,23 +15,25 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs._1password-gui
-    pkgs.direnv
-    pkgs.discord
-    pkgs.fd
-    pkgs.git
-    pkgs.handbrake
-    pkgs.jellyfin-media-player
-    pkgs.kitty
-    pkgs.makemkv
-    pkgs.nixfmt
-    pkgs.signal-desktop
-    pkgs.slack
-    pkgs.spotify
-    pkgs.spotify-tray
-    pkgs.starship
-    pkgs.zoom-us
+  home.packages = with pkgs; [
+    _1password-gui
+    direnv
+    discord
+    fd
+    git
+    handbrake
+    jellyfin-media-player
+    kitty
+    makemkv
+    # neovim
+    nixfmt
+    ripgrep
+    signal-desktop
+    slack
+    spotify
+    spotify-tray
+    starship
+    zoom-us
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -40,12 +42,12 @@
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
+    # (writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
@@ -108,6 +110,15 @@
     };
     ignores = [ "*.swp" "*.swo" ".DS_Store" ];
     extraConfig = { init = { defaultBranch = "main"; }; };
+  };
+
+  programs.neovim = {
+    enable = true;
+    extraConfig = ''
+      set runtimepath^=~/.vim runtimepath+=~/.vim/after
+      let &packpath = &runtimepath
+      source ~/.vimrc
+    '';
   };
 
   home.sessionVariables = { EDITOR = "vim"; };
