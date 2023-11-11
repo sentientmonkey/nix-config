@@ -132,6 +132,8 @@
     ffmpeg
     jellyfin
     jellyfin-ffmpeg
+    qmk
+    qmk-udev-rules
     vim
     vlc
     wget

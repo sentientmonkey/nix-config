@@ -57,4 +57,6 @@
       libvdpau-va-gl
     ];
   };
+
+  hardware.keyboard.qmk.enable = true;
 }
