@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     #<home-manager/nixos>
     #./home-manager.nix
-    ./monitoring.nix
+    ./monitoring
   ];
 
   # Bootloader.
