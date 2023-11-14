@@ -4,31 +4,29 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "sg" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "i915.force_probe=3e92" ];
-  
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8788dad3-39b1-4d64-9028-f6b8da86bc07";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/8788dad3-39b1-4d64-9028-f6b8da86bc07";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8A2B-D18C";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/8A2B-D18C";
+    fsType = "vfat";
+  };
 
-  fileSystems."/media" =
-    { device = "/dev/disk/by-uuid/cb921c45-2515-48a1-8ca4-c34243cfdd05";
-      fsType = "ext4";
-    };
+  fileSystems."/media" = {
+    device = "/dev/disk/by-uuid/cb921c45-2515-48a1-8ca4-c34243cfdd05";
+    fsType = "ext4";
+  };
 
   swapDevices = [ ];
 
@@ -42,8 +40,8 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   nixpkgs.config.packageOverrides = pkgs: {
     vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
@@ -52,7 +50,7 @@
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
     ];

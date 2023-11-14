@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     #<home-manager/nixos>
     #./home-manager.nix
+    ./monitoring.nix
   ];
 
   # Bootloader.
@@ -49,6 +50,8 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  services.xserver.videoDrivers = [ "intel" ];
 
   # Configure keymap in X11
   services.xserver = {
@@ -132,6 +135,9 @@
     ffmpeg
     jellyfin
     jellyfin-ffmpeg
+    (retroarch.override {
+      cores = with libretro; [ bsnes genesis-plus-gx snes9x beetle-psx-hw ];
+    })
     qmk
     qmk-udev-rules
     vim
