@@ -10,14 +10,15 @@
     _1password-gui
     direnv
     discord
+    dosbox
     fd
     git
+    gzdoom
     htop
     handbrake
     jellyfin-media-player
     kitty
     makemkv
-    # neovim
     nixfmt
     ripgrep
     signal-desktop
@@ -84,6 +85,7 @@
       set runtimepath^=~/.vim runtimepath+=~/.vim/after
       let &packpath = &runtimepath
       source ~/.vimrc
+      source ~/.config/nvim/start.lua
     '';
   };
 
