@@ -1,38 +1,40 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "scott";
-  home.homeDirectory = "/home/scott";
-
-  home.stateVersion = "23.05"; # Please read the comment before changing.
-
   home.packages = with pkgs; [
-    _1password-gui
+    awscli
     direnv
-    discord
-    dosbox
+    docker
+    docker-compose
     fd
+    gh
     git
-    gzdoom
     htop
-    handbrake
-    jellyfin-media-player
+    jq
+    k9s
+    kind
     kitty
-    makemkv
+    kustomize
     nixfmt
+    nodePackages.yaml-language-server
+    nodejs
+    python3
     ripgrep
-    signal-desktop
-    slack
-    spotify
-    spotify-tray
+    ruby_3_2
+    sd
     starship
-    zoom-us
+    tree
+    vim
+    watch
+    yarn
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
+    ".config/nvim/start.lua".source = nvim/start.lua;
+
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
@@ -51,7 +53,7 @@
 
     shellAliases = {
       ll = "ls -l";
-      update = "sudo nixos-rebuild switch";
+      ls = "ls --color";
     };
     history = {
       size = 10000;
@@ -67,7 +69,7 @@
   programs.git = {
     enable = true;
     userName = "Scott Windsor";
-    userEmail = "swindsor@gamil.com";
+    userEmail = "swindsor@gmail.com";
     aliases = {
       "ci" = "commit";
       "co" = "checkout";
@@ -89,7 +91,12 @@
     '';
   };
 
-  home.sessionVariables = { EDITOR = "vim"; };
+  home.sessionVariables = {
+    LANG = "en_US.UTF-8";
+    LC_CTYPE = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+    EDITOR = "vim";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

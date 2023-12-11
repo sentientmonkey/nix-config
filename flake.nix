@@ -13,13 +13,21 @@
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 
     homeConfigurations = {
-      "scott" = home-manager.lib.homeManagerConfiguration {
+      "scott-linux" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
         };
 
-        modules = [ ./home ];
+        modules = [ ./home ./home/linux ];
+      };
+      "scott-darwin" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config.allowUnfree = true;
+        };
+
+        modules = [ ./home ./home/darwin ];
       };
     };
 
