@@ -113,6 +113,7 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs; [
+    gnomeExtensions.dash-to-dock
     (retroarch.override {
       cores = with libretro; [ bsnes genesis-plus-gx snes9x beetle-psx-hw ];
     })
