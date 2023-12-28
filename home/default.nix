@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    alacritty
+    alacritty-theme
     awscli
     direnv
     docker
@@ -9,11 +11,13 @@
     fd
     gh
     git
+    google-cloud-sdk
     htop
     jq
     k9s
     kind
     kitty
+    kitty-themes
     kustomize
     nixfmt
     nodePackages.yaml-language-server
@@ -64,6 +68,18 @@
   programs.kitty = {
     enable = true;
     extraConfig = builtins.readFile ./kitty;
+  };
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font.size = 16;
+      font.normal = {
+        family = "Hack Nerd Font Mono";
+        style = "Regular";
+      };
+      import = [ "~/.nix-profile/tokyo-night.yaml" ];
+    };
   };
 
   programs.git = {
