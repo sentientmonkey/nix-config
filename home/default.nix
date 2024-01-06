@@ -23,6 +23,7 @@
     nodePackages.yaml-language-server
     nodejs
     python3
+    qmk
     ripgrep
     ruby_3_2
     sd
