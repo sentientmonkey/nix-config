@@ -25,7 +25,7 @@
     python3
     qmk
     ripgrep
-    ruby_3_2
+    ruby_3_3
     sd
     starship
     tree
