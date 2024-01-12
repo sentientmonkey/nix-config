@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     alejandra
     alacritty
@@ -34,7 +36,7 @@
     vim
     watch
     yarn
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
+    (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono" "Hack"];})
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -81,7 +83,7 @@
         family = "Hack Nerd Font Mono";
         style = "Regular";
       };
-      import = [ "~/.nix-profile/tokyo-night.yaml" ];
+      import = ["~/.nix-profile/tokyo-night.yaml"];
     };
   };
 
@@ -96,8 +98,8 @@
       "down" = "pull --rebase";
       "up" = "push -u";
     };
-    ignores = [ "*.swp" "*.swo" ".DS_Store" ];
-    extraConfig = { init = { defaultBranch = "main"; }; };
+    ignores = ["*.swp" "*.swo" ".DS_Store"];
+    extraConfig = {init = {defaultBranch = "main";};};
   };
 
   programs.neovim = {

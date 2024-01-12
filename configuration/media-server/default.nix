@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   services.avahi = {
     enable = true;
     nssmdns = true;
@@ -35,7 +39,7 @@
     jellyfin
     jellyfin-ffmpeg
     (retroarch.override {
-      cores = with libretro; [ bsnes genesis-plus-gx snes9x beetle-psx-hw ];
+      cores = with libretro; [bsnes genesis-plus-gx snes9x beetle-psx-hw];
     })
     vlc
   ];
@@ -52,7 +56,7 @@
       workgroup = WORKGROUP
       server string = smbnix
       netbios name = smbnix
-      security = user 
+      security = user
       #use sendfile = yes
       #max protocol = smb2
       # note: localhost is the ipv6 localhost ::1

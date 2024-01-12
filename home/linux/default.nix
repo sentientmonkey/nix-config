@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.username = "scott";
   home.homeDirectory = "/home/scott";
 
@@ -21,6 +23,5 @@
     zoom-us
   ];
 
-  programs.zsh = { shellAliases = { update = "sudo nixos-rebuild switch"; }; };
-
+  programs.zsh = {shellAliases = {update = "sudo nixos-rebuild switch";};};
 }

@@ -9,7 +9,11 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
+  outputs = {
+    nixpkgs,
+    home-manager,
+    ...
+  }: {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 
     homeConfigurations = {
@@ -19,7 +23,7 @@
           config.allowUnfree = true;
         };
 
-        modules = [ ./home ./home/linux ];
+        modules = [./home ./home/linux];
       };
       "scott-darwin" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
@@ -27,13 +31,13 @@
           config.allowUnfree = true;
         };
 
-        modules = [ ./home ./home/darwin ];
+        modules = [./home ./home/darwin];
       };
     };
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      modules = [ ./configuration ];
+      modules = [./configuration];
     };
   };
 }
