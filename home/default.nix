@@ -32,6 +32,7 @@
     ruby_3_3
     sd
     starship
+    statix
     tree
     vim
     watch

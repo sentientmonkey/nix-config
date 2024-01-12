@@ -3,10 +3,11 @@
   pkgs,
   ...
 }: {
-  home.username = "scott";
-  home.homeDirectory = "/home/scott";
-
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home = {
+    username = "scott";
+    homeDirectory = "/home/scott";
+    stateVersion = "23.05"; # Please read the comment before changing.
+  };
 
   home.packages = with pkgs; [
     _1password-gui
