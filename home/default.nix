@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    alejandra
     alacritty
     alacritty-theme
     awscli
@@ -20,6 +21,7 @@
     kitty-themes
     kustomize
     nixfmt
+    nixpkgs-fmt
     nodePackages.yaml-language-server
     nodejs
     python3
