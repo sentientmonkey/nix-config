@@ -2,4 +2,4 @@ bindkey -e
 eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
-PATH=$PATH:$HOME/bin
+PATH=$HOME/.gem/ruby/3.3.0/bin:$HOME/bin:$PATH
