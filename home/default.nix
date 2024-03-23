@@ -4,7 +4,8 @@
   ...
 }:
 with pkgs; let
-  git-co-author = callPackage ./git-co-author.nix {};
+  git-co-author = callPackage ./pkgs/git-co-author {};
+  docpars = callPackage ./pkgs/docpars {};
 in {
   home.packages = with pkgs; [
     alejandra
@@ -12,6 +13,7 @@ in {
     alacritty-theme
     awscli
     direnv
+    docpars
     docker
     docker-compose
     fd
