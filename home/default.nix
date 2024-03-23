@@ -2,7 +2,10 @@
   config,
   pkgs,
   ...
-}: {
+}:
+with pkgs; let
+  git-co-author = callPackage ./git-co-author.nix {};
+in {
   home.packages = with pkgs; [
     alejandra
     alacritty
@@ -14,6 +17,7 @@
     fd
     gh
     git
+    git-co-author
     google-cloud-sdk
     htop
     jq
@@ -100,7 +104,10 @@
       "up" = "push -u";
     };
     ignores = ["*.swp" "*.swo" ".DS_Store"];
-    extraConfig = {init = {defaultBranch = "main";};};
+    extraConfig = {
+      init = {defaultBranch = "main";};
+      commit = {template = "~/.git-commit-template";};
+    };
   };
 
   programs.neovim = {
