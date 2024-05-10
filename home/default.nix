@@ -8,7 +8,6 @@ with pkgs; let
   docpars = callPackage ./pkgs/docpars {};
 in {
   home.packages = with pkgs; [
-    alejandra
     alacritty
     alacritty-theme
     awscli
@@ -28,6 +27,7 @@ in {
     kitty
     kitty-themes
     kustomize
+    libdvdcss
     nixfmt
     nixpkgs-fmt
     nodePackages.yaml-language-server
