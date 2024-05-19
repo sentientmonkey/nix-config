@@ -10,7 +10,7 @@ in {
   home.packages = with pkgs; [
     alacritty
     alacritty-theme
-    awscli
+    awscli2
     direnv
     docpars
     docker
