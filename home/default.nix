@@ -1,11 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
-}:
-with pkgs; let
-  git-co-author = callPackage ./pkgs/git-co-author {};
-  docpars = callPackage ./pkgs/docpars {};
+{ config, pkgs, ... }:
+with pkgs;
+let
+  git-co-author = callPackage ./pkgs/git-co-author { };
+  docpars = callPackage ./pkgs/docpars { };
 in {
   home.packages = with pkgs; [
     alacritty
@@ -39,10 +36,12 @@ in {
     sd
     starship
     statix
+    tmux
+    tmuxinator
     tree
     watch
     yarn
-    (nerdfonts.override {fonts = ["FiraCode" "DroidSansMono" "Hack"];})
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -89,7 +88,7 @@ in {
         family = "Hack Nerd Font Mono";
         style = "Regular";
       };
-      import = ["~/.nix-profile/tokyo-night.yaml"];
+      import = [ "~/.nix-profile/tokyo-night.yaml" ];
     };
   };
 
@@ -104,10 +103,10 @@ in {
       "down" = "pull --rebase";
       "up" = "push -u";
     };
-    ignores = ["*.swp" "*.swo" ".DS_Store"];
+    ignores = [ "*.swp" "*.swo" ".DS_Store" ];
     extraConfig = {
-      init = {defaultBranch = "main";};
-      commit = {template = "~/.git-commit-template";};
+      init = { defaultBranch = "main"; };
+      commit = { template = "~/.git-commit-template"; };
     };
   };
 
@@ -121,6 +120,13 @@ in {
       source ~/.vimrc
       source ~/.config/nvim/start.lua
     '';
+  };
+
+  programs.tmux = {
+    enable = true;
+    tmuxinator.enable = true;
+
+    extraConfig = builtins.readFile ./tmux.conf;
   };
 
   home.sessionVariables = {
