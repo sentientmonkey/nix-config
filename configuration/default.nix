@@ -57,9 +57,9 @@
   services.xserver.videoDrivers = ["intel"];
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -163,6 +163,6 @@
     dedicatedServer.openFirewall =
       true; # Open ports in the firewall for Source Dedicated Server
   };
-  hardware.opengl.driSupport32Bit =
+  hardware.graphics.enable32Bit =
     true; # Enables support for 32bit libs that steam uses
 }
