@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   home = {
     username = "scott";
     homeDirectory = "/home/scott";
@@ -24,5 +20,11 @@
     zoom-us
   ];
 
-  programs.zsh = {shellAliases = {update = "sudo nixos-rebuild switch";};};
+  programs.zsh = {
+    shellAliases = {
+      rebuild = "sudo nixos-rebuild switch";
+      rebuild-home =
+        "home-manager switch --flake $HOME/workspace/nix-config#scott-linux";
+    };
+  };
 }
