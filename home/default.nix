@@ -19,6 +19,8 @@ in {
     google-cloud-sdk
     htop
     jq
+    kubectl
+    kustomize
     k9s
     kind
     kitty

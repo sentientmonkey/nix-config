@@ -1,11 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -54,7 +50,7 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-  services.xserver.videoDrivers = ["intel"];
+  services.xserver.videoDrivers = [ "intel" ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -92,7 +88,7 @@
   users.users.scott = {
     isNormalUser = true;
     description = "Scott Windsor";
-    extraGroups = ["networkmanager" "wheel" "audio"];
+    extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
     packages = with pkgs; [
       firefox
       home-manager
@@ -117,7 +113,7 @@
   environment.systemPackages = with pkgs; [
     gnomeExtensions.dash-to-dock
     (retroarch.override {
-      cores = with libretro; [bsnes genesis-plus-gx snes9x beetle-psx-hw];
+      cores = with libretro; [ bsnes genesis-plus-gx snes9x beetle-psx-hw ];
     })
     qmk
     qmk-udev-rules
@@ -126,7 +122,7 @@
     unzip
   ];
 
-  nix.settings.trusted-users = ["root" "scott"];
+  nix.settings.trusted-users = [ "root" "scott" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -165,4 +161,6 @@
   };
   hardware.graphics.enable32Bit =
     true; # Enables support for 32bit libs that steam uses
+
+  virtualisation.docker.enable = true;
 }
