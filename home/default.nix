@@ -8,6 +8,7 @@ in {
     alacritty
     alacritty-theme
     awscli2
+    devenv
     direnv
     docpars
     docker
