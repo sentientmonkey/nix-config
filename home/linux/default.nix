@@ -22,7 +22,7 @@
 
   programs.zsh = {
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch";
+      rebuild = "sudo nixos-rebuild switch --flake $HOME/workspace/nix-config";
       rebuild-home =
         "home-manager switch --flake $HOME/workspace/nix-config#scott-linux";
     };

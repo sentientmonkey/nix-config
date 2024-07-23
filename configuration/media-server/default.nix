@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{ config, pkgs, ... }: {
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -39,7 +35,7 @@
     jellyfin
     jellyfin-ffmpeg
     (retroarch.override {
-      cores = with libretro; [bsnes genesis-plus-gx snes9x beetle-psx-hw];
+      cores = with libretro; [ bsnes genesis-plus-gx snes9x beetle-psx-hw ];
     })
     vlc
   ];
@@ -77,10 +73,20 @@
       #      "force user" = "username";
       #      "force group" = "groupname";
       #};
-      private = {
+      media = {
+        path = "/media";
+        browseable = "yes";
+        "read only" = "yes";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+        "force user" = "jellyfin";
+        "force group" = "jellyfin";
+      };
+      mediamgmt = {
         path = "/media";
         "valid users" = "scott";
-        browseable = "no";
+        browseable = "yes";
         "read only" = "no";
         "guest ok" = "no";
         "create mask" = "0644";
