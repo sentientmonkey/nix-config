@@ -62,12 +62,13 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  #sound.enable = true;
   hardware.pulseaudio.enable = false;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
   nixpkgs.config.pulseaudio = true;
 
   security.rtkit.enable = true;
+  security.polkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -89,15 +90,15 @@
     isNormalUser = true;
     description = "Scott Windsor";
     extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
-    packages = with pkgs; [
-      firefox
-      home-manager
-      #  thunderbird
-    ];
+    packages = with pkgs; [ firefox home-manager _1password _1password-gui ];
     shell = pkgs.zsh;
   };
 
   programs.zsh.enable = true;
+
+  programs._1password.enable = true;
+  programs._1password-gui.enable = true;
+  programs._1password-gui.polkitPolicyOwners = [ "scott" ];
 
   # home-manager.users.scott = { pkgs, ... }: {
   #   home.packages = [ ];
