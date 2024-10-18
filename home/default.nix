@@ -41,7 +41,6 @@ in {
     statix
     tmux
     tmuxinator
-    transmission_4-gtk
     tree
     watch
     yarn
