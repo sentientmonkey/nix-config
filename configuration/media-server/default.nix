@@ -12,7 +12,7 @@
   };
 
   services.caddy = {
-    enable = false;
+    enable = true;
     virtualHosts."nixos.local".extraConfig = ''
       reverse_proxy http://localhost:8096
     '';
