@@ -90,7 +90,12 @@
     isNormalUser = true;
     description = "Scott Windsor";
     extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
-    packages = with pkgs; [ firefox home-manager _1password _1password-gui ];
+    packages = with pkgs; [
+      firefox
+      home-manager
+      _1password-cli
+      _1password-gui
+    ];
     shell = pkgs.zsh;
   };
 
@@ -113,9 +118,6 @@
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.dash-to-dock
-    (retroarch.override {
-      cores = with libretro; [ bsnes genesis-plus-gx snes9x beetle-psx-hw ];
-    })
     qmk
     qmk-udev-rules
     vim

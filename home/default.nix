@@ -10,9 +10,10 @@ in {
     awscli2
     devenv
     direnv
-    docpars
+    dig
     docker
     docker-compose
+    docpars
     fd
     gh
     git
@@ -20,18 +21,21 @@ in {
     google-cloud-sdk
     htop
     jq
-    kubectl
-    kustomize
     k9s
     kind
     kitty
     kitty-themes
+    kubectl
     kustomize
     libdvdcss
+    mtr
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.fira-mono
+    nerd-fonts.hack
     nixfmt
     nixpkgs-fmt
-    nodePackages.yaml-language-server
     nodejs
+    nodePackages.yaml-language-server
     python3
     qmk
     ripgrep
@@ -44,7 +48,6 @@ in {
     tree
     watch
     yarn
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "Hack" ]; })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
