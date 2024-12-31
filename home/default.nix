@@ -65,6 +65,7 @@ in {
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/ghostty/config".source = ./ghostty;
   };
 
   programs.zsh = {
