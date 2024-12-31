@@ -34,7 +34,13 @@
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      modules = [ ./configuration ./ghostty ];
+      modules = [
+        ./configuration
+        {
+          environment.systemPackages =
+            [ ghostty.packages.x86_64-linux.default ];
+        }
+      ];
     };
   };
 }
