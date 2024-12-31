@@ -1,4 +1,4 @@
-theme = tokonight
+theme = tokyonight
 font-size = 16
 font-family = Hack Nerd Font Mono
 
@@ -7,4 +7,4 @@ keybind = super+minus=decrease_font_size:1
 keybind = super+0=reset_font_size
 
 keybind = super+c=copy_to_clipboard
-keybind = super+v=paste_rom_clipboard
+keybind = super+v=paste_from_clipboard
