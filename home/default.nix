@@ -29,9 +29,6 @@ in {
     kustomize
     libdvdcss
     mtr
-    nerd-fonts.droid-sans-mono
-    nerd-fonts.fira-mono
-    nerd-fonts.hack
     nixfmt
     nixpkgs-fmt
     nodejs

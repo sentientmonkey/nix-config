@@ -16,6 +16,7 @@
     slack
     spotify
     spotify-tray
+    transmission_4
     zoom-us
   ];
 

@@ -5,7 +5,14 @@
     stateVersion = "23.05";
   };
 
-  home.packages = with pkgs; [ colima iterm2 ];
+  home.packages = with pkgs; [
+    colima
+    iterm2
+    # add nerd fonts here for macos
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.fira-mono
+    nerd-fonts.hack
+  ];
 
   programs.zsh = {
     enable = true;
