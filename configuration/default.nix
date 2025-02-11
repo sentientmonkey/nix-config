@@ -174,9 +174,23 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-    nerd-fonts.droid-sans-mono
-    nerd-fonts.hack
-  ];
+  fonts = {
+    packages = with pkgs; [
+      inter
+      ubuntu-classic
+      roboto
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
+      nerd-fonts.hack
+    ];
+
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "Inter" ];
+        sansSerif = [ "Inter" ];
+        monospace = [ "Hack Nerd Font Mono" ];
+      };
+    };
+  };
+
 }

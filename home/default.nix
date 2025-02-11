@@ -5,6 +5,7 @@ let
   docpars = callPackage ./pkgs/docpars { };
 in {
   home.packages = with pkgs; [
+    aider-chat
     alacritty
     alacritty-theme
     awscli2
@@ -31,6 +32,7 @@ in {
     mtr
     nixfmt
     nixpkgs-fmt
+    ollama
     nodejs
     nodePackages.yaml-language-server
     python3
@@ -107,7 +109,7 @@ in {
       "down" = "pull --rebase";
       "up" = "push -u";
     };
-    ignores = [ "*.swp" "*.swo" ".DS_Store" ];
+    ignores = [ "*.swp" "*.swo" ".DS_Store" ".aider*" ];
     extraConfig = {
       init = { defaultBranch = "main"; };
       commit = { template = "~/.git-commit-template"; };
