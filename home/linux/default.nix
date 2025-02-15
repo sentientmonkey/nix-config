@@ -19,6 +19,7 @@
     transmission_4
     zoom-us
   ];
+  nixpkgs.config.allowUnfree = true;
 
   programs.zsh = {
     shellAliases = {

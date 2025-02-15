@@ -40,6 +40,10 @@
           environment.systemPackages =
             [ ghostty.packages.x86_64-linux.default ];
         }
+
+        home-manager.nixosModules.home-manager
+        { home-manager.users.scott = import ./home/linux; }
+        { home-manager.users.scott = import ./home; }
       ];
     };
   };
