@@ -9,6 +9,7 @@ in {
     alacritty
     alacritty-theme
     awscli2
+    cargo
     devenv
     direnv
     dig
@@ -39,6 +40,7 @@ in {
     qmk
     ripgrep
     ruby_3_3
+    rustc
     sd
     starship
     statix
