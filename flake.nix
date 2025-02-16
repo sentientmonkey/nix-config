@@ -3,14 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    home-manager = { url = "github:nix-community/home-manager"; };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty = { url = "github:ghostty-org/ghostty"; };
   };
 
-  outputs = { nixpkgs, home-manager, ghostty, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, nix-darwin, ghostty, ... }: {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 
     homeConfigurations = {
@@ -35,16 +36,29 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration
+        ./nixos
         {
           environment.systemPackages =
             [ ghostty.packages.x86_64-linux.default ];
         }
-
         home-manager.nixosModules.home-manager
         { home-manager.users.scott = import ./home/linux; }
         { home-manager.users.scott = import ./home; }
       ];
+    };
+
+    darwinConfigurations = {
+      "Scotts-MacBook-Air" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./macos
+          home-manager.darwinModules.home-manager
+          { home-manager.users.scott = import ./home/darwin; }
+          { home-manager.users.scott = import ./home; }
+        ];
+
+        specialArgs = { inherit inputs; };
+      };
     };
   };
 }

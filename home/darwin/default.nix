@@ -18,6 +18,8 @@
     enable = true;
     initExtraFirst = builtins.readFile ./zshrc;
     shellAliases = {
+      rebuild =
+        "darwin-rebuild switch --flake darwin=$HOME/workspace/nix-config";
       rebuild-home =
         "home-manager switch --flake $HOME/workspace/nix-config#scott-darwin";
     };

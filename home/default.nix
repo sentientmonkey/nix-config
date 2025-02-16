@@ -20,6 +20,7 @@ in {
     gh
     git
     git-co-author
+    go
     google-cloud-sdk
     htop
     jq
