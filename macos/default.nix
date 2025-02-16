@@ -43,7 +43,6 @@
       NSGlobalDomain = { "com.apple.swipescrolldirection" = false; };
 
     };
-    keyboard.remapCapsLockToControl = true;
   };
 
   users.users.scott = {
