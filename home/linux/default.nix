@@ -16,6 +16,7 @@
     slack
     spotify
     spotify-tray
+    tuba
     transmission_4
     zoom-us
   ];

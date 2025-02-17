@@ -8,10 +8,9 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty = { url = "github:ghostty-org/ghostty"; };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-darwin, ghostty, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, nix-darwin, ... }: {
     defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
 
     homeConfigurations = {
@@ -37,10 +36,6 @@
       system = "x86_64-linux";
       modules = [
         ./nixos
-        {
-          environment.systemPackages =
-            [ ghostty.packages.x86_64-linux.default ];
-        }
         home-manager.nixosModules.home-manager
         { home-manager.users.scott = import ./home/linux; }
         { home-manager.users.scott = import ./home; }
