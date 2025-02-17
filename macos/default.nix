@@ -41,9 +41,10 @@
       };
 
       NSGlobalDomain = { "com.apple.swipescrolldirection" = false; };
-
     };
   };
+
+  nix = { settings.trusted-users = [ "scott" ]; };
 
   users.users.scott = {
     name = "scott";
