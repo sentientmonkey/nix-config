@@ -12,6 +12,7 @@
     handbrake
     jellyfin-media-player
     makemkv
+    reaper
     signal-desktop
     slack
     spotify
