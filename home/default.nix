@@ -26,8 +26,8 @@ in {
     jq
     k9s
     kind
-    kitty
-    kitty-themes
+    #kitty
+    #kitty-themes
     kubectl
     kustomize
     libdvdcss
@@ -86,7 +86,7 @@ in {
   };
 
   programs.kitty = {
-    enable = true;
+    enable = false;
     extraConfig = builtins.readFile ./kitty;
   };
 
