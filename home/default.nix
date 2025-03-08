@@ -32,6 +32,7 @@ in {
     kustomize
     libdvdcss
     mtr
+    nixd
     nixfmt
     nixpkgs-fmt
     ollama

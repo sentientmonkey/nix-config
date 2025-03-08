@@ -3,3 +3,7 @@ eval "$(starship init zsh)"
 eval "$(direnv hook zsh)"
 
 PATH=$HOME/.gem/ruby/3.3.0/bin:$HOME/bin:$PATH
+
+if [[ -f $HOME/.zshrc.local ]]; then
+  . $HOME/.zshrc.local
+fi
