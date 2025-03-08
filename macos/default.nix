@@ -5,11 +5,13 @@
 
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
+  # Using determinate systems installer now
+  nix.enable = false;
 
   #environment.darwinConfig = "$HOME/workspace/nix-config";
 
   # to fix issue with using existing nix
-  ids.gids.nixbld = 30000;
+  #ids.gids.nixbld = 30000;
 
   # Enable alternative shell support in nix-darwin.
   # programs.fish.enable = true;
