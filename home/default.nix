@@ -33,7 +33,7 @@ in {
     libdvdcss
     mtr
     nixd
-    nixfmt
+    nixfmt-rfc-style
     nixpkgs-fmt
     ollama
     nodejs
