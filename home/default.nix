@@ -3,7 +3,8 @@ with pkgs;
 let
   git-co-author = callPackage ./pkgs/git-co-author { };
   docpars = callPackage ./pkgs/docpars { };
-in {
+in
+{
   home.packages = with pkgs; [
     aider-chat
     alacritty
@@ -26,8 +27,8 @@ in {
     jq
     k9s
     kind
-    #kitty
-    #kitty-themes
+    kitty
+    kitty-themes
     kubectl
     kustomize
     libdvdcss
@@ -86,7 +87,7 @@ in {
   };
 
   programs.kitty = {
-    enable = false;
+    enable = true;
     extraConfig = builtins.readFile ./kitty;
   };
 
@@ -113,10 +114,19 @@ in {
       "down" = "pull --rebase";
       "up" = "push -u";
     };
-    ignores = [ "*.swp" "*.swo" ".DS_Store" ".aider*" ];
+    ignores = [
+      "*.swp"
+      "*.swo"
+      ".DS_Store"
+      ".aider*"
+    ];
     extraConfig = {
-      init = { defaultBranch = "main"; };
-      commit = { template = "~/.git-commit-template"; };
+      init = {
+        defaultBranch = "main";
+      };
+      commit = {
+        template = "~/.git-commit-template";
+      };
     };
   };
 
