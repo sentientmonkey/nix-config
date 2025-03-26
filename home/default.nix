@@ -58,6 +58,8 @@ in
   # plain files is through 'home.file'.
   home.file = {
     ".config/nvim/start.lua".source = nvim/start.lua;
+    ".vim" = {source = ./vim; recursive = true; };
+    ".vimrc".source = ./vim/vimrc;
 
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
