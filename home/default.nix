@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 with pkgs;
 let
   git-co-author = callPackage ./pkgs/git-co-author { };
@@ -58,7 +63,10 @@ in
   # plain files is through 'home.file'.
   home.file = {
     ".config/nvim/start.lua".source = nvim/start.lua;
-    ".vim" = {source = ./vim; recursive = true; };
+    ".vim" = {
+      source = ./vim;
+      recursive = true;
+    };
     ".vimrc".source = ./vim/vimrc;
 
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
@@ -72,6 +80,29 @@ in
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     ".config/ghostty/config".source = ./ghostty;
+  };
+
+  home.activation = {
+    updateVimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" ] ''
+      cd ~/.vim
+         export PATH="${
+           lib.makeBinPath (
+             with pkgs;
+             [
+               clang
+               curl
+               git
+               gnumake
+               gnutar
+               gzip
+               llvmPackages_latest.llvm
+               which
+               neovim
+             ]
+           )
+         }:$PATH"
+      nvim -c PlugUpdate! -c PlugCreate! -c quitall
+    '';
   };
 
   programs.zsh = {
