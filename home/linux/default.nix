@@ -25,9 +25,9 @@
 
   programs.zsh = {
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake $HOME/workspace/nix-config";
+      rebuild = "sudo nixos-rebuild switch --flake \"$HOME/workspace/nix-config?submodules=1\"";
       rebuild-home =
-        "home-manager switch --flake $HOME/workspace/nix-config#scott-linux";
+        "home-manager switch --flake \"$HOME/workspace/nix-config#scott-linux?submodules=1\"";
     };
   };
 }
