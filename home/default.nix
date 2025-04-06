@@ -23,6 +23,7 @@ in
     docker-compose
     docpars
     fd
+    gcc
     gh
     git
     git-co-author
@@ -101,7 +102,7 @@ in
              ]
            )
          }:$PATH"
-      nvim -c PlugUpdate! -c PlugCreate! -c quitall
+        run nvim -c PlugInstall! -c PlugUpdate! -c PlugClean! -c quitall
     '';
   };
 
@@ -167,6 +168,7 @@ in
     enable = true;
     viAlias = true;
     vimAlias = true;
+    plugins = [ pkgs.vimPlugins.vim-plug ];
     extraConfig = ''
       set runtimepath^=~/.vim runtimepath+=~/.vim/after
       let &packpath = &runtimepath
