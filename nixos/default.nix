@@ -1,7 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -61,8 +62,8 @@
 
   # Enable sound with pipewire.
   #sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  services.pulseaudio.enable = false;
+  services.pulseaudio.package = pkgs.pulseaudioFull;
   nixpkgs.config.pulseaudio = true;
 
   security.rtkit.enable = true;
@@ -87,7 +88,12 @@
   users.users.scott = {
     isNormalUser = true;
     description = "Scott Windsor";
-    extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "docker"
+    ];
     packages = with pkgs; [
       firefox
       ghostty
@@ -124,7 +130,10 @@
     unzip
   ];
 
-  nix.settings.trusted-users = [ "root" "scott" ];
+  nix.settings.trusted-users = [
+    "root"
+    "scott"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -156,13 +165,10 @@
 
   programs.steam = {
     enable = true;
-    remotePlay.openFirewall =
-      true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall =
-      true; # Open ports in the firewall for Source Dedicated Server
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
-  hardware.graphics.enable32Bit =
-    true; # Enables support for 32bit libs that steam uses
+  hardware.graphics.enable32Bit = true; # Enables support for 32bit libs that steam uses
 
   virtualisation.docker.enable = true;
 
