@@ -1,12 +1,19 @@
-{ self, nix-darwin, nixpkgs, pkgs, ... }: {
+{
+  self,
+  nix-darwin,
+  nixpkgs,
+  pkgs,
+  ...
+}:
+{
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [ home-manager ];
 
   # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+  #nix.settings.experimental-features = "nix-command flakes";
   # Using determinate systems installer now
-  nix.enable = false;
+  #nix.enable = false;
 
   #environment.darwinConfig = "$HOME/workspace/nix-config";
 
@@ -34,6 +41,7 @@
         show-process-indicators = true;
         show-recents = false;
         static-only = false;
+        persistent-apps = [ ];
       };
 
       finder = {
@@ -42,11 +50,27 @@
         FXEnableExtensionChangeWarning = false;
       };
 
-      NSGlobalDomain = { "com.apple.swipescrolldirection" = false; };
+      NSGlobalDomain = {
+        "com.apple.swipescrolldirection" = false;
+      };
+    };
+
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
     };
   };
 
-  nix = { settings.trusted-users = [ "scott" ]; };
+  nix = {
+    enable = false;
+    settings = {
+      experimental-features = "nix-command flakes";
+      trusted-users = [
+        "root"
+        "scott"
+      ];
+    };
+  };
 
   users.users.scott = {
     name = "scott";
