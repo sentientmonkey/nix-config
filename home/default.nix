@@ -22,7 +22,9 @@ in
     docker
     docker-compose
     docpars
+    dotacat
     fd
+    figlet
     gcc
     gh
     git

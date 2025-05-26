@@ -110,6 +110,33 @@
   programs._1password-gui.enable = true;
   programs._1password-gui.polkitPolicyOwners = [ "scott" ];
 
+  programs.rust-motd = {
+    enable = true;
+    enableMotdInSSHD = true;
+
+    settings = {
+      banner = {
+        color = "white";
+        command = "echo ${config.networking.hostName} | ${pkgs.figlet}/bin/figlet -f slant | ${pkgs.dotacat}/bin/dotacat";
+      };
+      uptime = {
+        prefix = "Up";
+      };
+      load_avg = {
+        format = "Load (1, 5, 15 min.): {one:.02}, {five:.02}, {fifteen:.02}";
+      };
+      memory = {
+        swap_pos = "beside";
+      };
+      filesystems = {
+        root = "/";
+        media = "/media";
+      };
+      last_login = {
+        scott = 1;
+      };
+    };
+  };
   # home-manager.users.scott = { pkgs, ... }: {
   #   home.packages = [ ];
   #   programs.bash.enable = true;
@@ -125,6 +152,9 @@
     gnomeExtensions.dash-to-dock
     qmk
     qmk-udev-rules
+    rust-motd
+    figlet
+    dotacat
     vim
     wget
     unzip
