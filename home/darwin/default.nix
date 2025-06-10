@@ -19,7 +19,7 @@
     enable = true;
     initContent = builtins.readFile ./zshrc;
     shellAliases = {
-      rebuild = "darwin-rebuild switch --flake \"$HOME/workspace/nix-config?submodules=1\"";
+      rebuild = "sudo darwin-rebuild switch --flake \"$HOME/workspace/nix-config?submodules=1\"";
       rebuild-home = "home-manager switch --flake \"$HOME/workspace/nix-config#scott-darwin?submodules=1\"";
     };
   };

@@ -41,6 +41,7 @@ in
     kustomize
     libdvdcss
     mtr
+    nix-direnv
     nixd
     nixfmt-rfc-style
     nixpkgs-fmt
