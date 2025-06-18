@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   home = {
     username = "scott";
     homeDirectory = "/home/scott";
@@ -11,7 +12,8 @@
     gzdoom
     handbrake
     jellyfin-media-player
-    makemkv
+    # www.makemkv.com is down...
+    #    makemkv
     reaper
     signal-desktop
     slack
@@ -26,8 +28,7 @@
   programs.zsh = {
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake \"$HOME/workspace/nix-config?submodules=1\"";
-      rebuild-home =
-        "home-manager switch --flake \"$HOME/workspace/nix-config#scott-linux?submodules=1\"";
+      rebuild-home = "home-manager switch --flake \"$HOME/workspace/nix-config#scott-linux?submodules=1\"";
     };
   };
 }
