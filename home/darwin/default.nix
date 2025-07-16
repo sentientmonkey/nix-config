@@ -7,6 +7,7 @@
   };
 
   home.packages = with pkgs; [
+    chirp
     (colima.override {
       lima = lima.override {
         withAdditionalGuestAgents = true;
