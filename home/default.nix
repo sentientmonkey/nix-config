@@ -59,6 +59,7 @@ in
     tmux
     tmuxinator
     tree
+    vim
     watch
     yarn
     zed-editor
@@ -67,7 +68,11 @@ in
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".config/nvim/start.lua".source = nvim/start.lua;
+    ".config/nvim/start.lua".source = ./nvim/start.lua;
+    ".config/nvim/lua" = {
+      source = ./nvim/lua;
+      recursive = true;
+    };
     ".vim" = {
       source = ./vim;
       recursive = true;
@@ -87,28 +92,28 @@ in
     ".config/ghostty/config".source = ./ghostty;
   };
 
-  home.activation = {
-    updateVimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" ] ''
-      cd ~/.vim
-         export PATH="${
-           lib.makeBinPath (
-             with pkgs;
-             [
-               clang
-               curl
-               git
-               gnumake
-               gnutar
-               gzip
-               llvmPackages_latest.llvm
-               which
-               neovim
-             ]
-           )
-         }:$PATH"
-        run nvim -c PlugInstall! -c PlugUpdate! -c PlugClean! -c quitall
-    '';
-  };
+#  home.activation = {
+#    updateVimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" ] ''
+#      cd ~/.vim
+#         export PATH="${
+#           lib.makeBinPath (
+#             with pkgs;
+#             [
+#               clang
+#               curl
+#               git
+#               gnumake
+#               gnutar
+#               gzip
+#               llvmPackages_latest.llvm
+#               which
+#               vim
+#             ]
+#           )
+#         }:$PATH"
+#        run vim -c PlugInstall! -c PlugUpdate! -c PlugClean! -c quitall
+#    '';
+#  };
 
   programs.zsh = {
     enable = true;
@@ -170,13 +175,10 @@ in
 
   programs.neovim = {
     enable = true;
-    viAlias = true;
-    vimAlias = true;
-    plugins = [ pkgs.vimPlugins.vim-plug ];
+    viAlias = false;
+    vimAlias = false;
+    plugins = [ ];
     extraConfig = ''
-      set runtimepath^=~/.vim runtimepath+=~/.vim/after
-      let &packpath = &runtimepath
-      source ~/.vimrc
       source ~/.config/nvim/start.lua
     '';
   };
