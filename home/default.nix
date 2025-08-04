@@ -46,6 +46,7 @@ in
     nixfmt-rfc-style
     nixpkgs-fmt
     ollama
+    neovim
     nodejs
     nodePackages.yaml-language-server
     python3
@@ -68,9 +69,8 @@ in
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".config/nvim/start.lua".source = ./nvim/start.lua;
-    ".config/nvim/lua" = {
-      source = ./nvim/lua;
+    ".config/nvim" = {
+      source = ./nvim/lua
       recursive = true;
     };
     ".vim" = {
@@ -173,16 +173,6 @@ in
     };
   };
 
-  programs.neovim = {
-    enable = true;
-    viAlias = false;
-    vimAlias = false;
-    plugins = [ ];
-    extraConfig = ''
-      source ~/.config/nvim/start.lua
-    '';
-  };
-
   programs.tmux = {
     enable = true;
     tmuxinator.enable = true;
@@ -194,7 +184,7 @@ in
     LANG = "en_US.UTF-8";
     LC_CTYPE = "en_US.UTF-8";
     LC_ALL = "en_US.UTF-8";
-    EDITOR = "vim";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
