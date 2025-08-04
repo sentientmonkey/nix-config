@@ -70,7 +70,7 @@ in
   # plain files is through 'home.file'.
   home.file = {
     ".config/nvim" = {
-      source = ./nvim/lua
+      source = ./nvim;
       recursive = true;
     };
     ".vim" = {
