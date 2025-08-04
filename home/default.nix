@@ -25,6 +25,7 @@ in
     dotacat
     fd
     figlet
+    fzf
     gcc
     gh
     git
