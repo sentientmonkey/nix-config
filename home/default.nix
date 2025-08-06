@@ -93,28 +93,28 @@ in
     ".config/ghostty/config".source = ./ghostty;
   };
 
-#  home.activation = {
-#    updateVimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" ] ''
-#      cd ~/.vim
-#         export PATH="${
-#           lib.makeBinPath (
-#             with pkgs;
-#             [
-#               clang
-#               curl
-#               git
-#               gnumake
-#               gnutar
-#               gzip
-#               llvmPackages_latest.llvm
-#               which
-#               vim
-#             ]
-#           )
-#         }:$PATH"
-#        run vim -c PlugInstall! -c PlugUpdate! -c PlugClean! -c quitall
-#    '';
-#  };
+  #  home.activation = {
+  #    updateVimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" ] ''
+  #      cd ~/.vim
+  #         export PATH="${
+  #           lib.makeBinPath (
+  #             with pkgs;
+  #             [
+  #               clang
+  #               curl
+  #               git
+  #               gnumake
+  #               gnutar
+  #               gzip
+  #               llvmPackages_latest.llvm
+  #               which
+  #               vim
+  #             ]
+  #           )
+  #         }:$PATH"
+  #        run vim -c PlugInstall! -c PlugUpdate! -c PlugClean! -c quitall
+  #    '';
+  #  };
 
   programs.zsh = {
     enable = true;
@@ -191,4 +191,3 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
-
