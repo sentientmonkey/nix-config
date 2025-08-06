@@ -111,7 +111,7 @@
   programs._1password-gui.polkitPolicyOwners = [ "scott" ];
 
   programs.rust-motd = {
-    enable = true;
+    enable = false;
     enableMotdInSSHD = true;
 
     settings = {
