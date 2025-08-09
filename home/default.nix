@@ -31,6 +31,7 @@ in
     gh
     git
     git-co-author
+    gnumake
     go
     google-cloud-sdk
     htop
