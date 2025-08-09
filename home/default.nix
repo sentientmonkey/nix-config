@@ -15,6 +15,7 @@ in
     alacritty
     alacritty-theme
     awscli2
+    bash-language-server
     cargo
     devenv
     direnv
@@ -55,6 +56,7 @@ in
     ripgrep
     ruby_3_3
     rustc
+    shellcheck
     sd
     starship
     statix
@@ -91,6 +93,29 @@ in
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     ".config/ghostty/config".source = ./ghostty;
+  };
+
+  home.activation = {
+    updateLazyVimPlugins = lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" ] ''
+      cd ~/.config/nvim
+      export PATH="${
+        lib.makeBinPath (
+          with pkgs;
+          [
+            clang
+            curl
+            git
+            gnumake
+            gnutar
+            gzip
+            llvmPackages_latest.llvm
+            which
+            neovim
+          ]
+        )
+      }:$PATH"
+      run nvim --headless -c 'Lazy! sync' -c 'qa'
+    '';
   };
 
   #  home.activation = {
