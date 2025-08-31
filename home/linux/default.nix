@@ -11,7 +11,8 @@
     dosbox
     gzdoom
     handbrake
-    jellyfin-media-player
+    # removing due to qtwebengine having CVEs
+    #jellyfin-media-player
     # www.makemkv.com is down...
     #    makemkv
     reaper
@@ -24,6 +25,10 @@
     zoom-us
   ];
   nixpkgs.config.allowUnfree = true;
+
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "qtwebengine-5.15.19" # used by jellyfin-media-player
+  # ];
 
   programs.zsh = {
     shellAliases = {

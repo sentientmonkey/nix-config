@@ -93,6 +93,7 @@
       "wheel"
       "audio"
       "docker"
+      "dailout"
     ];
     packages = with pkgs; [
       firefox
