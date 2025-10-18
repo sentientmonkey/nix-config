@@ -26,6 +26,7 @@ in
     dotacat
     fd
     figlet
+    ffmpeg
     fzf
     gcc
     gh
@@ -67,6 +68,7 @@ in
     vim
     watch
     yarn
+    yt-dlp
     zed-editor
   ];
 
