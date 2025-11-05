@@ -154,14 +154,25 @@ in
 
   programs.git = {
     enable = true;
-    userName = "Scott Windsor";
-    userEmail = "swindsor@gmail.com";
-    aliases = {
-      "ci" = "commit";
-      "co" = "checkout";
-      "s" = "status";
-      "down" = "pull --rebase";
-      "up" = "push -u";
+    settings = {
+      user = {
+        name = "Scott Windsor";
+        email = "swindsor@gmail.com";
+      };
+      aliases = {
+        "ci" = "commit";
+        "co" = "checkout";
+        "s" = "status";
+        "down" = "pull --rebase";
+        "up" = "push -u";
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      commit = {
+        template = "~/.git-commit-template";
+      };
+
     };
     ignores = [
       "*.swp"
@@ -169,14 +180,6 @@ in
       ".DS_Store"
       ".aider*"
     ];
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      commit = {
-        template = "~/.git-commit-template";
-      };
-    };
   };
 
   programs.tmux = {
