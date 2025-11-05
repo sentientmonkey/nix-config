@@ -159,7 +159,7 @@ in
         name = "Scott Windsor";
         email = "swindsor@gmail.com";
       };
-      aliases = {
+      alias = {
         "ci" = "commit";
         "co" = "checkout";
         "s" = "status";
