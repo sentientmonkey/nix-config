@@ -11,7 +11,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    aider-chat
     alacritty
     alacritty-theme
     awscli2
