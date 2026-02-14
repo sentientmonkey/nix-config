@@ -54,17 +54,20 @@
           home-manager.nixosModules.home-manager
           { home-manager.users.scott = import ./home/linux; }
           { home-manager.users.scott = import ./home; }
+          { home-manager.users.scott.nixpkgs.config.allowUnfree = true; }
         ];
       };
 
       darwinConfigurations = {
         "Scotts-MacBook-Air" = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
+
           modules = [
             ./macos
             home-manager.darwinModules.home-manager
             { home-manager.users.scott = import ./home/darwin; }
             { home-manager.users.scott = import ./home; }
+            { home-manager.users.scott.nixpkgs.config.allowUnfree = true; }
           ];
 
           specialArgs = { inherit inputs; };

@@ -16,6 +16,7 @@ in
     awscli2
     bash-language-server
     cargo
+    claude-code
     devenv
     direnv
     dig
