@@ -12,7 +12,7 @@
     gzdoom
     handbrake
     # removing due to qtwebengine having CVEs
-    jellyfin-media-player
+    # jellyfin-media-player
     makemkv
     reaper
     signal-desktop
@@ -25,9 +25,9 @@
   ];
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "qtwebengine-5.15.19" # used by jellyfin-media-player
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "qtwebengine-5.15.19" # used by jellyfin-media-player
+  # ];
 
   programs.zsh = {
     shellAliases = {
