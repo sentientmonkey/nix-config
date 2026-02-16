@@ -47,7 +47,7 @@ in
     mtr
     nix-direnv
     nixd
-    nixfmt-rfc-style
+    nixfmt
     nixpkgs-fmt
     ollama
     neovim

@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -18,17 +19,6 @@
     '';
   };
 
-  nixpkgs.overlays = [
-    (self: super: {
-      vlc = super.vlc.override {
-        libbluray = super.libbluray.override {
-          withAACS = true;
-          withBDplus = true;
-        };
-      };
-    })
-  ];
-
   environment.systemPackages = with pkgs; [
     handbrake
     ffmpeg
@@ -39,8 +29,7 @@
 
   services.jellyfin.enable = true;
 
-  services.samba-wsdd.enable =
-    true; # make shares visible for windows 10 clients
+  services.samba-wsdd.enable = true; # make shares visible for windows 10 clients
 
   services.samba = {
     enable = false;
