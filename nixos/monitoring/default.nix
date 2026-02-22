@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services.grafana = {
     enable = true;
     settings = {
@@ -11,6 +12,7 @@
         http_port = 3000;
         domain = "nixos.local";
       };
+      security.secret_key = "eaf6b1a21b7b874b95cc8dd3f6728469770329d094fe211628a838913391069b";
     };
   };
 
@@ -21,7 +23,7 @@
     exporters = {
       node = {
         enable = true;
-        enabledCollectors = ["systemd"];
+        enabledCollectors = [ "systemd" ];
         port = 9002;
       };
     };
@@ -32,9 +34,7 @@
         static_configs = [
           {
             targets = [
-              "127.0.0.1:${
-                toString config.services.prometheus.exporters.node.port
-              }"
+              "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
             ];
           }
         ];
@@ -43,7 +43,7 @@
         job_name = "prometheus";
         static_configs = [
           {
-            targets = ["127.0.0.1:${toString config.services.prometheus.port}"];
+            targets = [ "127.0.0.1:${toString config.services.prometheus.port}" ];
           }
         ];
       }
