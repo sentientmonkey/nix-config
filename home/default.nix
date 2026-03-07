@@ -68,7 +68,6 @@ in
     vim
     watch
     yarn
-    yt-dlp
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
