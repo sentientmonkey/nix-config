@@ -8,12 +8,7 @@
 
   home.packages = with pkgs; [
     chirp
-    (colima.override {
-      lima = lima.override {
-        withAdditionalGuestAgents = true;
-      };
-    })
-    lima-additional-guestagents
+    colima
     iterm2
     # add nerd fonts here for macos
     nerd-fonts.droid-sans-mono
