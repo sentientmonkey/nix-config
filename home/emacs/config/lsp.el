@@ -2,6 +2,7 @@
 ;; Add a (mode . eglot-ensure) hook line and the server to home.packages
 ;; to enable LSP for a new language.
 (use-package eglot
+  :straight nil  ; built into Emacs 29+ — don't try to fetch from MELPA
   :hook
   ((sh-mode     . eglot-ensure)   ; bash-language-server
    (nix-mode    . eglot-ensure)   ; nixd

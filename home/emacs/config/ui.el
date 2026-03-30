@@ -2,6 +2,7 @@
 ;; Browse alternatives with: M-x consult-theme
 ;; Variants: tokyonight-night, tokyonight-storm, tokyonight-moon, tokyonight-day
 (use-package tokyonight-themes
+  :straight (:host github :repo "xuchengpeng/tokyonight-themes")
   :config
   (load-theme 'tokyonight-storm t))
 

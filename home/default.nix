@@ -8,18 +8,6 @@ with pkgs;
 let
   git-co-author = callPackage ./pkgs/git-co-author { };
   docpars = callPackage ./pkgs/docpars { };
-  # Emacs packages not in nixpkgs, built from source via trivialBuild.
-  # trivialBuild is for simple packages with no compilation step (e.g. theme-only packages).
-  tokyonight-themes = pkgs.emacsPackages.trivialBuild {
-    pname = "tokyonight-themes";
-    version = "unstable";
-    src = pkgs.fetchFromGitHub {
-      owner = "xuchengpeng";
-      repo = "tokyonight-themes";
-      rev = "82d23ba6aa683b8d4a57f38706487c332d6701a9";
-      hash = "sha256-0ojBCUojgdg+jOQBlCbKVdPHLR3JSOCKuhUOcol3HnI=";
-    };
-  };
 in
 {
   home.packages = with pkgs; [
@@ -36,6 +24,7 @@ in
     docker-compose
     docpars
     dotacat
+    emacs
     fd
     figlet
     ffmpeg
@@ -136,30 +125,11 @@ in
       }:$PATH"
       run ./bin/update
     '';
-  };
-
-  programs.emacs = {
-    enable = true;
-    # We declare Emacs packages here in Nix rather than using a package
-    # manager inside Emacs (like straight.el or use-package :ensure).
-    # `epkgs` is the set of all available Emacs packages in nixpkgs.
-    # We'll add packages here as we build out the config in later steps.
-    extraPackages = epkgs: with epkgs; [
-      evil
-      evil-collection
-      undo-fu
-      which-key
-      vertico
-      orderless
-      consult
-      marginalia
-      nix-mode
-      yaml-mode
-      tokyonight-themes
-      doom-modeline
-      nerd-icons
-      evil-org
-    ];
+    updateEmacsPackages = lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" ] ''
+      export PATH="${lib.makeBinPath (with pkgs; [ emacs git curl ])}:$PATH"
+      cd ~/.emacs.d       
+      run ./bin/update
+    '';
   };
 
   programs.zsh = {

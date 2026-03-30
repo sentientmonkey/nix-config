@@ -1,4 +1,5 @@
 (use-package org
+  :straight nil  ; built into Emacs — don't try to fetch from MELPA
   :config
   (setq org-directory "~/org")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
