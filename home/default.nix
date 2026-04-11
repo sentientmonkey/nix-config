@@ -53,7 +53,6 @@ in
     ollama
     neovim
     nodejs
-    nodePackages.yaml-language-server
     python3
     qmk
     ripgrep
@@ -68,6 +67,7 @@ in
     tree
     vim
     watch
+    yaml-language-server
     yarn
   ];
 
@@ -126,7 +126,16 @@ in
       run ./bin/update
     '';
     updateEmacsPackages = lib.hm.dag.entryAfter [ "writeBoundary" "installPackages" ] ''
-      export PATH="${lib.makeBinPath (with pkgs; [ emacs git curl ])}:$PATH"
+      export PATH="${
+        lib.makeBinPath (
+          with pkgs;
+          [
+            emacs
+            git
+            curl
+          ]
+        )
+      }:$PATH"
       cd ~/.emacs.d       
       run ./bin/update
     '';
@@ -187,6 +196,7 @@ in
       };
 
     };
+    signing.format = "openpgp";
     ignores = [
       "*.swp"
       "*.swo"
