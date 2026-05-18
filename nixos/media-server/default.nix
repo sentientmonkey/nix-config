@@ -1,4 +1,10 @@
 { pkgs, ... }:
+let
+  caddyWithRoute53 = pkgs.caddy.withPlugins {
+    plugins = [ "github.com/caddy-dns/route53@v1.6.2" ];
+    hash = "sha256-p5JdqcQvUfdyxh4tbSFRy8ffTO7juQ2SeQbFx8RPR2w=";
+  };
+in
 {
   services.avahi = {
     enable = true;
@@ -14,10 +20,18 @@
 
   services.caddy = {
     enable = true;
-    virtualHosts."nixos.local".extraConfig = ''
+    package = caddyWithRoute53;
+    virtualHosts."jellyfin.sentientmonkey.com".extraConfig = ''
+      tls {
+        dns route53 {
+          region us-east-1
+        }
+      }
       reverse_proxy http://localhost:8096
     '';
   };
+
+  systemd.services.caddy.serviceConfig.EnvironmentFile = "/etc/caddy/aws-credentials";
 
   environment.systemPackages = with pkgs; [
     handbrake
