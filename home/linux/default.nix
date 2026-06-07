@@ -7,12 +7,7 @@
   };
 
   home.packages = with pkgs; [
-    discord
-    signal-desktop
-    slack
-    tuba
-    transmission_4
-    zoom-us
+    ghostty
   ];
   nixpkgs.config.allowUnfree = true;
 
@@ -23,7 +18,7 @@
   programs.zsh = {
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake \"$HOME/workspace/nix-config?submodules=1\"";
-      rebuild-home = "home-manager switch --flake \"$HOME/workspace/nix-config#scott-linux?submodules=1\"";
+      rebuild-home = "home-manager switch --flake \"$HOME/workspace/nix-config?submodules=1#scott-linux\"";
     };
   };
 }

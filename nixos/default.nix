@@ -96,19 +96,22 @@
       "dailout"
     ];
     packages = with pkgs; [
-      firefox
-      ghostty
-      home-manager
       _1password-cli
       _1password-gui
+      discord
       dosbox
+      firefox
       gzdoom
       handbrake
-      # removing due to qtwebengine having CVEs
       # jellyfin-media-player
       makemkv
       reaper
+      # removing due to qtwebengine having CVEs
+      signal-desktop
+      slack
+      transmission_4
       tuba
+      zoom-us
     ];
     shell = pkgs.zsh;
   };
