@@ -13,7 +13,14 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
   sh -s -- install
 ```
 
-3. Install nix-darwin and point to config
+3. For mac, Install nix-darwin and point to config
+
 ```
 nix run nix-darwin/master#darwin-rebuild -- switch --flake "$NIX_CONFIG_HOME?submodules=1"
+```
+
+For linux (not nixos), Install with home manager
+
+```
+nix run github:nix-community/home-manager -- switch --flake $HOME/workspace/nix-config?submodules=1#scott-linux
 ```

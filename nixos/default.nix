@@ -101,6 +101,14 @@
       home-manager
       _1password-cli
       _1password-gui
+      dosbox
+      gzdoom
+      handbrake
+      # removing due to qtwebengine having CVEs
+      # jellyfin-media-player
+      makemkv
+      reaper
+      tuba
     ];
     shell = pkgs.zsh;
   };

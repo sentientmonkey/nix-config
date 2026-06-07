@@ -8,17 +8,8 @@
 
   home.packages = with pkgs; [
     discord
-    dosbox
-    gzdoom
-    handbrake
-    # removing due to qtwebengine having CVEs
-    # jellyfin-media-player
-    makemkv
-    reaper
     signal-desktop
     slack
-    spotify
-    spotify-tray
     tuba
     transmission_4
     zoom-us
