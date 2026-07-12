@@ -8,8 +8,7 @@
 
   home.packages = with pkgs; [
     chirp
-    colima
-    iterm2
+    # colima
     # add nerd fonts here for macos
     nerd-fonts.droid-sans-mono
     nerd-fonts.fira-mono
