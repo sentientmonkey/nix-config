@@ -56,7 +56,7 @@ in
     python3
     qmk
     ripgrep
-    ruby_3_3
+    ruby
     rustc
     shellcheck
     sd
