@@ -64,7 +64,6 @@
   #sound.enable = true;
   services.pulseaudio.enable = false;
   services.pulseaudio.package = pkgs.pulseaudioFull;
-  nixpkgs.config.pulseaudio = true;
 
   security.rtkit.enable = true;
   security.polkit.enable = true;

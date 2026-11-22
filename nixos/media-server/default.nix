@@ -2,7 +2,7 @@
 let
   caddyWithRoute53 = pkgs.caddy.withPlugins {
     plugins = [ "github.com/caddy-dns/route53@v1.6.2" ];
-    hash = "sha256-Vzp4Y9mARJrAHZ1C3x6+5zTSGiYY1l3FxIPkqK1RI30=";
+    hash = "sha256-OCEWErFM5/iMXZKrQcsbJ5Hxmm6w88Ss9Uz/8N16EfY=";
   };
 in
 {
@@ -13,7 +13,6 @@ in
       enable = true;
       addresses = true;
       hinfo = true;
-      userServices = true;
       workstation = true;
     };
   };
